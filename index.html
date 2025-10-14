@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Kiazaki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta property="description" content="Enter The Ki — A digital realm of elegance and solitude." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kiazaki.neocities.org" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/EnterTheKi/Kiazaki/main/assets/images/kiazaki-logo.png" />
+    <link rel="icon" href="assets/images/kiazaki-fav.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="assets/images/kiazaki-fav.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Header with Image -->
+        <header>
+            <div class="header-image-container">
+                <img src="assets/images/urki-header.jpg" alt="Kiazaki Header" class="header-image" />
+            </div>
+
+            <!-- Widget Controls moved to top right -->
+            <div class="header-controls">
+                <button class="control-btn search-trigger" id="search-btn" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span class="btn-label">Search</span>
+                </button>
+                <button class="control-btn radio-trigger" id="radio-btn" title="Radio">
+                    <i class="fa-solid fa-play"></i>
+                    <span class="btn-label">Radio</span>
+                </button>
+                <button class="control-btn menu-trigger" id="menu-btn" title="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                    <span class="btn-label">Menu</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar Navigation (moved to right) -->
+        <aside class="sidebar-right">
+            <nav class="nav-container">
+                <h2>Navigate</h2>
+                <ul class="nav-menu">
+                    <li><a href="#home" onclick="scrollToSection('#home')">Home</a></li>
+                    <li><a href="#music" onclick="scrollToSection('#music')">Music</a></li>
+                    <li><a href="#visual-section" onclick="scrollToSection('#visual-section')">Visual Work</a></li>
+                    <li><a href="#links" onclick="scrollToSection('#links')">Links</a></li>
+                    <li><a href="#contact" onclick="scrollToSection('#contact')">Contact</a></li>
+                </ul>
+
+                <hr />
+
+                <h2>Wings</h2>
+                <ul class="journal-nav">
+                    <li><a href="https://www.behance.net/kiazaki" target="_blank" rel="noopener">Portfolio <span>🎨</span></a></li>
+                    <li><a href="https://urki.bandcamp.com/" target="_blank" rel="noopener">Sound <span>🎵</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-main">
+            <!-- Introduction Section -->
+            <section class="intro-section" id="home">
+                <div class="content-wrapper">
+                    <div class="symbol-logo">
+                        <img src="assets/images/kiazaki-logo.png" alt="Kiazaki Symbol" />
+                    </div>
+                    <div class="text-content">
+                        <h1>Welcome to Kiazaki</h1>
+                        <p class="intro-text">
+                            I am Urki, a digital artist and explorer of the metaphysical. This is my digital
+                            mausoleum — a tomb of thoughts, visuals, and sonic experiments that capture the
+                            essence of <em>Ki</em>, that mysterious energy that flows through all things.
+                        </p>
+                        <p class="intro-text">
+                            Here you'll find visual narratives, experimental music, philosophical musings,
+                            and other curiosities from my journey through the digital ether.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Links Section -->
+            <section class="content-section" id="links">
+                <div class="section-header">
+                    <h2 class="section-title">Ethereal Links</h2>
+                    <button class="section-toggle" onclick="toggleSection('links')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="links-content">
+                    <div class="links-grid">
+                        <a href="https://3377.bandcamp.com/" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-bandcamp"></i></div>
+                            <div class="link-info">
+                                <h4>3377</h4>
+                                <p>Experimental Audio Poetry</p>
+                            </div>
+                        </a>
+                        <a href="https://soundcloud.com/3377" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-soundcloud"></i></div>
+                            <div class="link-info">
+                                <h4>SoundCloud</h4>
+                                <p>Audio Experiments</p>
+                            </div>
+                        </a>
+                        <a href="https://mathematics-music.bandcamp.com/" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-bandcamp"></i></div>
+                            <div class="link-info">
+                                <h4>Mathematics ♥ Music</h4>
+                                <p>Sound & Math</p>
+                            </div>
+                        </a>
+                        <a href="https://www.behance.net/kiazaki" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-behance"></i></div>
+                            <div class="link-info">
+                                <h4>Behance</h4>
+                                <p>Visual Design</p>
+                            </div>
+                        </a>
+                        <a href="https://open.spotify.com/artist/44s7HBHznMXoXCdklGJrDl" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-spotify"></i></div>
+                            <div class="link-info">
+                                <h4>Spotify</h4>
+                                <p>33:27 Tracks</p>
+                            </div>
+                        </a>
+                        <a href="https://youtube.com/@3377experimentalmusic" target="_blank" class="link-card">
+                            <div class="link-icon"><i class="fa-brands fa-youtube"></i></div>
+                            <div class="link-info">
+                                <h4>YouTube</h4>
+                                <p>Experimental Music</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="content-section" id="contact">
+                <div class="section-header">
+                    <h2 class="section-title">Contact</h2>
+                    <button class="section-toggle" onclick="toggleSection('contact')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="contact-content">
+                    <div class="contact-info">
+                        <p>For collaborations, commissions, or just to connect:</p>
+                        <div class="contact-links">
+                            <a href="mailto:kiazaki_art@outlook.com" class="contact-link">
+                                <i class="fa-solid fa-envelope"></i> Email
+                            </a>
+                            <a href="https://twitter.com/urki_kiazaki" target="_blank" class="contact-link">
+                                <i class="fa-brands fa-twitter"></i> Twitter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Content -->
+            <section class="featured-section">
+                <div class="featured-media">
+                    <iframe
+                        src="https://player.vimeo.com/video/1121869790?badge=0&autopause=0&player_id=0&app_id=58479&byline=0&title=0&portrait=0&controls=1&background=0&muted=0&autoplay=0&loop=0&dnt=1"
+                        width="640"
+                        height="360"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen
+                        title="Kiazaki">
+                    </iframe>
+                </div>
+            </section>
+
+            <!-- Expandable Sections -->
+            <section class="content-section" id="ki-section">
+                <div class="section-header">
+                    <h2 class="section-title">Ki — Unknown</h2>
+                    <button class="section-toggle" onclick="toggleSection('ki-section')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="ki-section-content">
+                    <div class="section-media">
+                        <img src="assets/images/ki-unknown.gif" alt="Ki Unknown" loading="lazy" />
+                    </div>
+                    <div class="section-text">
+                        <p>The past is dead. Your old self? Gone. This is where you shed what you held back—the doubts, the toxic ties, the version of you that settled for less.</p>
+                        <p>Ki isn't just energy; it's a rebirth. Wear your energy. Move in silence. Let your new life begin the moment you step into the skin.</p>
+                        <p>The door is open. Enter The Ki. Welcome to your Inner Child.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="loki-section">
+                <div class="section-header">
+                    <h2 class="section-title">Lō-Ki</h2>
+                    <button class="section-toggle" onclick="toggleSection('loki-section')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="loki-section-content">
+                    <div class="section-media">
+                        <img src="assets/images/lo-ki.gif" alt="Lō-Ki" loading="lazy" />
+                    </div>
+                    <div class="section-text">
+                        <p>The noise? Mute it. The hype? An illusion. This is where you trade performance for power—the need for approval, the loud opinions, the constant broadcast of your next move.</p>
+                        <p>Low-key isn't just quiet. It's a strategy. Operate in silence. Build in shadows. Let your results make the sound your mouth never did.</p>
+                        <p>Be modest. Be humble. Stay Lō-Ki ローキー.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="guide-section">
+                <div class="section-header">
+                    <h2 class="section-title">The Guide</h2>
+                    <button class="section-toggle" onclick="toggleSection('guide-section')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="guide-section-content">
+                    <div class="section-media">
+                        <img src="assets/images/ki-clown.gif" alt="Guide" loading="lazy" />
+                    </div>
+                    <div class="section-text">
+                        <p>The path? Unwritten. The map? Within. This is where you silence the outside voices—the unsolicited advice, the borrowed dreams, the noise of "should."</p>
+                        <p>A guide isn't a leader. It's a mirror. Listen to your rhythm. Trust your footing. Let your intuition speak in a language only you understand.</p>
+                        <p>The way is yours to walk. Follow your own frequency. Welcome to your authority.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Work Preview -->
+            <section class="content-section" id="visual-section">
+                <div class="section-header">
+                    <h2 class="section-title">Visual Work</h2>
+                    <button class="section-toggle" onclick="toggleSection('visual-section')">
+                        <i class="fa-solid fa-plus"></i> Explore
+                    </button>
+                </div>
+                <div class="section-content" id="visual-section-content">
+                    <p class="section-desc">A collection of visual narratives that capture the essence of the Ki realm through minimalist aesthetics and thoughtful composition.</p>
+                    <div class="visual-grid">
+                        <article class="visual-item">
+                            <img src="assets/images/ki-1.png" alt="Ki Character" loading="lazy" />
+                            <h4>Ki Character Design</h4>
+                        </article>
+                        <article class="visual-item">
+                            <img src="assets/images/kipainting.png" alt="Painting" loading="lazy" />
+                            <h4>Digital Painting</h4>
+                        </article>
+                        <article class="visual-item">
+                            <img src="assets/images/unimation.png" alt="Unimation" loading="lazy" />
+                            <h4>Animation Work</h4>
+                        </article>
+                    </div>
+                    <div class="section-links">
+                        <a href="https://www.behance.net/kiazaki" target="_blank" class="external-link">
+                            View Full Portfolio <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Music Section -->
+            <section class="music-preview" id="music">
+                <h2>Sound</h2>
+                <p class="section-intro">Ambient textures and experimental compositions exploring metaphysical concepts.</p>
+
+                <div class="music-grid">
+                    <div class="music-item">
+                        <div class="album-art">
+                            <div class="album-placeholder">
+                                <span class="album-title">Homesick ⾕</span>
+                                <span class="artist">Urki 気</span>
+                            </div>
+                        </div>
+                        <div class="music-info">
+                            <h4>Urki 気</h4>
+                            <p>Ambient drone and experimental soundscapes</p>
+                            <a href="https://urki.bandcamp.com/" target="_blank" class="listen-btn">
+                                <i class="fa-brands fa-bandcamp"></i> Listen
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="music-item">
+                        <div class="album-art">
+                            <div class="album-placeholder">
+                                <span class="album-title">三十三二十七</span>
+                                <span class="artist">33:27</span>
+                            </div>
+                        </div>
+                        <div class="music-info">
+                            <h4>33:27</h4>
+                            <p>Conceptual ambient compositions</p>
+                            <a href="https://3327.bandcamp.com/" target="_blank" class="listen-btn">
+                                <i class="fa-brands fa-bandcamp"></i> Listen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>Kiazaki - Where Digital Dreams Take Shape</p>
+                <nav class="footer-nav">
+                    <a href="#home">Home</a>
+                    <a href="#music">Music</a>
+                    <a href="#visual-section">Visual Work</a>
+                    <a href="#links">Links</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <input type="search" id="search-input" placeholder="Search..." />
+            <div id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Radio Player -->
+    <audio id="radio-player" preload="none">
+        <source src="https://ice.somafm.com/dronezone-128-mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js" defer></script>
+    <script>
+        // Fix loading order - ensure all elements exist before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+
+</html>
