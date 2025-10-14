@@ -33,8 +33,8 @@
   --c-muted: #ddddcc;
   --c-dim: #888877;
   --c-dimmer: #444433;
-  --c-accent: #5544ff;
-  --c-highlight: #ff6b6b;
+  --c-accent: #3a5f7a;     /* Muted teal/lead blue */
+  --c-highlight: #8b6b47;  /* Antique gold/sepia */
 
   /* Layout variables */
   --layout-width: 72em;
@@ -46,6 +46,30 @@
 ::selection {
   background: var(--c-accent);
   color: var(--c-bg);
+}
+
+/* Esoteric Background Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 20% 20%, var(--c-accent) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, var(--c-highlight) 1px, transparent 1px),
+    radial-gradient(circle at 50% 80%, var(--c-accent) 1px, transparent 1px);
+  background-size: 150px 150px, 120px 120px, 180px 180px;
+  animation: esoteric-constellation 120s linear infinite;
+  z-index: -1;
+}
+
+@keyframes esoteric-constellation {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to { background-position: 150px 150px, 120px 120px, 180px 180px; }
 }
 
 html,
@@ -213,13 +237,13 @@ body {
       }
 
       &:hover {
-        background: linear-gradient(145deg, var(--c-accent), rgba(85,68,255,0.8));
+        background: linear-gradient(145deg, var(--c-accent), rgba(58,95,122,0.8));
         border-color: var(--c-highlight);
         transform: scale(1.05) translateY(-1px);
         box-shadow:
           inset -4px -4px 8px rgba(0,0,0,0.5),
           inset 4px 4px 8px rgba(255,255,255,0.2),
-          0 4px 8px rgba(85,68,255,0.4);
+          0 4px 8px rgba(58,95,122,0.4);
       }
 
       &:active {
@@ -1465,14 +1489,6 @@ body.loaded .control-btn {
 /* Content sections that expand when clicked */
 .content-section {
   margin-block-end: calc(1em * 4 * var(--line-height));
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth easing */
-
-  &.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
 
   .section-header {
     display: flex;
@@ -1545,6 +1561,32 @@ body.loaded .control-btn {
     &.show {
       display: block;
     }
+
+    .section-media {
+      /* Square container for GIFs */
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 300px; /* Limit max size on larger screens */
+      margin: 0 auto calc(1em * 1.5);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--c-dimmer);
+      box-shadow:
+        inset 2px 2px 8px rgba(0,0,0,0.3),
+        0 4px 12px rgba(0,0,0,0.2);
+
+      @media (max-width: 720px) {
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Fill square perfectly */
+        display: block;
+      }
+    }
   }
 }
 
@@ -1580,6 +1622,118 @@ body.loaded .control-btn {
   &:hover::after {
     animation-duration: 0.8s;
   }
+}
+
+/* Occult-themed decorative elements */
+.navigation-decoration {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+  font-size: 2rem;
+  color: var(--c-accent);
+  transform: rotate(-15deg);
+  font-family: 'Times New Roman', Georgia, serif;
+}
+
+.alchemical-symbol {
+  content: "☽";
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+  font-size: 3rem;
+  color: var(--c-highlight);
+  transform: rotate(180deg);
+}
+
+.esoteric-ornament {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, var(--c-accent) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: esoteric-float 20s ease-in-out infinite;
+}
+
+@keyframes esoteric-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translateY(-10px) rotate(90deg);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translateY(-5px) rotate(180deg);
+    opacity: 0.03;
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
+    opacity: 0.06;
+  }
+}
+
+/* Subtle energy field around interactive elements */
+.interactive-element::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(ellipse, rgba(85, 68, 255, 0.1) 0%, transparent 70%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.interactive-element:hover::before {
+  opacity: 1;
+}
+
+.section-content:hover::after {
+  content: "॰";
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  font-size: 2rem;
+  color: var(--c-accent);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* 1930s-style shadow effects */  
+.content-section .section-content {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.01) 100%
+  );
+  pointer-events: none;
 }
 
 @keyframes pulse-dot {
