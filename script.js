@@ -63,9 +63,62 @@ class WidgetController {
         this.init();
     }
 
+    ensureButtonElements() {
+        // Add missing IDs to buttons if they don't exist
+        const searchBtn = document.querySelector('header .control-btn[title="Search"]');
+        const radioBtn = document.querySelector('header .control-btn[title="Radio"]');
+        const menuBtn = document.querySelector('header .control-btn[title="Menu"]');
+
+        if (searchBtn && !searchBtn.id) {
+            searchBtn.id = 'search-btn';
+        }
+        if (radioBtn && !radioBtn.id) {
+            radioBtn.id = 'radio-btn';
+        }
+        if (menuBtn && !menuBtn.id) {
+            menuBtn.id = 'menu-btn';
+        }
+    }
+
+    initializeSearchModal() {
+        // Create search modal if it doesn't exist
+        if (!this.searchModal) {
+            const modal = document.createElement('div');
+            modal.id = 'search-modal';
+            modal.className = 'modal-overlay hidden';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <input type="search" id="search-input" placeholder="Search..." />
+                    <div id="search-results"></div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            this.searchModal = modal;
+            this.searchInput = modal.querySelector('#search-input');
+            this.searchResults = modal.querySelector('#search-results');
+        }
+    }
+
+    ensureRadioPlayer() {
+        // Create radio player if it doesn't exist
+        if (!this.radioPlayer) {
+            const audio = document.createElement('audio');
+            audio.id = 'radio-player';
+            audio.preload = 'none';
+            const source = document.createElement('source');
+            source.src = 'https://ice.somafm.com/dronezone-128-mp3';
+            source.type = 'audio/mpeg';
+            audio.appendChild(source);
+            document.body.appendChild(audio);
+            this.radioPlayer = audio;
+        }
+    }
+
     init() {
-        // Ensure all buttons exist and are styled correctly
+        // Ensure buttons, modal and radio player exist
         this.ensureButtonElements();
+        this.initializeSearchModal();
+        this.ensureRadioPlayer();
 
         // Initialize 1930s vibe animations after a delay
         setTimeout(() => {
@@ -157,38 +210,104 @@ class WidgetController {
     }
 
     toggleMenu() {
-        // Hamburger menu - toggle section visibility on mobile
-        const sectionHeaders = document.querySelectorAll('.section-header');
+        // Hamburger menu - toggle navigation/sidebar visibility and expand all expandable sections on mobile
+        const sidebar = document.querySelector('.sidebar-right');
 
-        // Hide all sections initially, then toggle them
-        if (!window.mobileMenuExpanded) {
-            sectionHeaders.forEach(header => {
-                const section = header.closest('.content-section');
-                const content = section.querySelector('.section-content');
-                const toggle = header.querySelector('.section-toggle');
+        if (sidebar) {
+            // Check if we're on mobile (sidebar is after content)
+            const isMobile = window.getComputedStyle(sidebar).order !== '1';
 
-                if (content) {
-                    content.classList.add('show');
-                    section.classList.add('show');
-                    if (toggle) {
-                        toggle.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
+            if (isMobile) {
+                // On mobile, toggle sidebar visibility and expand sections
+                const sectionHeaders = document.querySelectorAll('.section-header');
+
+                if (!window.mobileMenuExpanded) {
+                    // First show the sidebar
+                    sidebar.style.display = 'block';
+
+                    // Then expand all expandable sections
+                    sectionHeaders.forEach(header => {
+                        const section = header.closest('.content-section');
+                        const content = section.querySelector('.section-content');
+                        const toggle = header.querySelector('.section-toggle');
+
+                        if (content) {
+                            content.classList.add('show');
+                            section.classList.add('show');
+                            if (toggle) {
+                                toggle.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
+                            }
+                        }
+                    });
+
+                    window.mobileMenuExpanded = true;
+
+                    // Visual feedback for menu button - green when expanded
+                    const menuBtn = document.querySelector('#menu-btn, [title="Menu"]');
+                    if (menuBtn && menuBtn.style) {
+                        menuBtn.style.background = 'linear-gradient(145deg, #4CAF50, rgba(76,175,80,0.8))';
+                        menuBtn.style.border = '2px outset #4CAF50';
+                    }
+                } else {
+                    // Collapse all expandable sections first
+                    sectionHeaders.forEach(header => {
+                        const section = header.closest('.content-section');
+                        const content = section.querySelector('.section-content');
+                        const toggle = header.querySelector('.section-toggle');
+
+                        if (content && toggle.innerHTML.includes('Close')) {
+                            content.classList.remove('show');
+                            section.classList.remove('show');
+                            toggle.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
+                        }
+                    });
+
+                    // Then hide the sidebar
+                    sidebar.style.display = 'none';
+
+                    window.mobileMenuExpanded = false;
+
+                    // Reset visual feedback for menu button
+                    const menuBtn = document.querySelector('#menu-btn, [title="Menu"]');
+                    if (menuBtn && menuBtn.style) {
+                        menuBtn.style.background = 'linear-gradient(145deg, var(--c-bg-dark), rgba(0,0,0,0.9))';
+                        menuBtn.style.border = '2px outset var(--c-dimmer)';
                     }
                 }
-            });
-            window.mobileMenuExpanded = true;
-        } else {
-            sectionHeaders.forEach(header => {
-                const section = header.closest('.content-section');
-                const content = section.querySelector('.section-content');
-                const toggle = header.querySelector('.section-toggle');
+            } else {
+                // On desktop, use original hamburger behavior
+                const sectionHeaders = document.querySelectorAll('.section-header');
 
-                if (content && toggle.innerHTML.includes('Close')) {
-                    content.classList.remove('show');
-                    section.classList.remove('show');
-                    toggle.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
+                if (!window.mobileMenuExpanded) {
+                    sectionHeaders.forEach(header => {
+                        const section = header.closest('.content-section');
+                        const content = section.querySelector('.section-content');
+                        const toggle = header.querySelector('.section-toggle');
+
+                        if (content) {
+                            content.classList.add('show');
+                            section.classList.add('show');
+                            if (toggle) {
+                                toggle.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
+                            }
+                        }
+                    });
+                    window.mobileMenuExpanded = true;
+                } else {
+                    sectionHeaders.forEach(header => {
+                        const section = header.closest('.content-section');
+                        const content = section.querySelector('.section-content');
+                        const toggle = header.querySelector('.section-toggle');
+
+                        if (content && toggle.innerHTML.includes('Close')) {
+                            content.classList.remove('show');
+                            section.classList.remove('show');
+                            toggle.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
+                        }
+                    });
+                    window.mobileMenuExpanded = false;
                 }
-            });
-            window.mobileMenuExpanded = false;
+            }
         }
     }
 
