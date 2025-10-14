@@ -33,21 +33,24 @@ function toggleSection(sectionId) {
 
     const button = section.querySelector('.section-toggle');
 
-    if (content.classList.contains('show')) {
+    // Use dataset to track state instead of checking innerHTML
+    const isExpanded = content.classList.contains('show');
+
+    if (isExpanded) {
+        // Close section
         content.classList.remove('show');
         section.classList.remove('show');
-
-        // Change button icon back to plus - ensure it always resets to plus
         if (button) {
             button.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
+            button.dataset.expanded = 'false';
         }
     } else {
+        // Open section
         content.classList.add('show');
         section.classList.add('show');
-
-        // Change button icon to minus
         if (button) {
             button.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
+            button.dataset.expanded = 'true';
         }
     }
 }
@@ -190,11 +193,11 @@ class WidgetController {
     toggleRadio() {
         if (this.radioPlayer.paused) {
             this.radioPlayer.play().catch(e => console.error('Radio play failed:', e));
-            // Visual feedback for all radio buttons - add green color
+            // Visual feedback for all radio buttons - add muted vintage teal color
             document.querySelectorAll('#radio-btn, [title="Radio"]').forEach(btn => {
                 if (btn && btn.style) {
-                    btn.style.background = 'linear-gradient(145deg, #4CAF50, rgba(76,175,80,0.8))';
-                    btn.style.border = '2px outset #4CAF50';
+                    btn.style.background = 'linear-gradient(145deg, #3a5f7a, rgba(58,95,122,0.8))';
+                    btn.style.border = '2px outset #3a5f7a';
                 }
             });
         } else {
@@ -225,40 +228,36 @@ class WidgetController {
                     // First show the sidebar
                     sidebar.style.display = 'block';
 
-                    // Then expand all expandable sections
+                    // Then expand all expandable sections (but don't change their individual button state)
                     sectionHeaders.forEach(header => {
                         const section = header.closest('.content-section');
                         const content = section.querySelector('.section-content');
-                        const toggle = header.querySelector('.section-toggle');
 
                         if (content) {
                             content.classList.add('show');
                             section.classList.add('show');
-                            if (toggle) {
-                                toggle.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
-                            }
                         }
                     });
 
                     window.mobileMenuExpanded = true;
 
-                    // Visual feedback for menu button - green when expanded
+                    // Visual feedback for menu button - muted vintage teal when expanded
                     const menuBtn = document.querySelector('#menu-btn, [title="Menu"]');
                     if (menuBtn && menuBtn.style) {
-                        menuBtn.style.background = 'linear-gradient(145deg, #4CAF50, rgba(76,175,80,0.8))';
-                        menuBtn.style.border = '2px outset #4CAF50';
+                        menuBtn.style.background = 'linear-gradient(145deg, #3a5f7a, rgba(58,95,122,0.8))';
+                        menuBtn.style.border = '2px outset #3a5f7a';
                     }
                 } else {
-                    // Collapse all expandable sections first
+                    // Collapse only sections that were expanded by menu toggle
                     sectionHeaders.forEach(header => {
                         const section = header.closest('.content-section');
                         const content = section.querySelector('.section-content');
                         const toggle = header.querySelector('.section-toggle');
 
-                        if (content && toggle.innerHTML.includes('Close')) {
+                        // Only collapse if section is expanded and button state is not individually set
+                        if (content && content.classList.contains('show') && toggle.dataset.expanded !== 'true') {
                             content.classList.remove('show');
                             section.classList.remove('show');
-                            toggle.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
                         }
                     });
 
@@ -282,14 +281,10 @@ class WidgetController {
                     sectionHeaders.forEach(header => {
                         const section = header.closest('.content-section');
                         const content = section.querySelector('.section-content');
-                        const toggle = header.querySelector('.section-toggle');
 
                         if (content) {
                             content.classList.add('show');
                             section.classList.add('show');
-                            if (toggle) {
-                                toggle.innerHTML = '<i class="fa-solid fa-minus"></i> Close';
-                            }
                         }
                     });
                     window.mobileMenuExpanded = true;
@@ -297,12 +292,11 @@ class WidgetController {
                     sectionHeaders.forEach(header => {
                         const section = header.closest('.content-section');
                         const content = section.querySelector('.section-content');
-                        const toggle = header.querySelector('.section-toggle');
 
-                        if (content && toggle.innerHTML.includes('Close')) {
+                        // Only collapse sections that were expanded by menu toggle
+                        if (content && content.classList.contains('show')) {
                             content.classList.remove('show');
                             section.classList.remove('show');
-                            toggle.innerHTML = '<i class="fa-solid fa-plus"></i> Explore';
                         }
                     });
                     window.mobileMenuExpanded = false;
