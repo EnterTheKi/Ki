@@ -51,6 +51,7 @@
                 <h2>Navigate</h2>
                 <ul class="nav-menu">
                     <li><a href="#home" onclick="scrollToSection('#home')">Home</a></li>
+                    <li><a href="#blog-section" onclick="scrollToSection('#blog-section')">Blog</a></li>
                     <li><a href="#music" onclick="scrollToSection('#music')">Music</a></li>
                     <li><a href="#visual-section" onclick="scrollToSection('#visual-section')">Visual Work</a></li>
                     <li><a href="#links" onclick="scrollToSection('#links')">Links</a></li>
@@ -114,13 +115,7 @@
                                 <p>Audio Experiments</p>
                             </div>
                         </a>
-                        <a href="https://mathematics-music.bandcamp.com/" target="_blank" class="link-card">
-                            <div class="link-icon"><i class="fa-brands fa-bandcamp"></i></div>
-                            <div class="link-info">
-                                <h4>Mathematics ♥ Music</h4>
-                                <p>Sound & Math</p>
-                            </div>
-                        </a>
+
                         <a href="https://www.behance.net/kiazaki" target="_blank" class="link-card">
                             <div class="link-icon"><i class="fa-brands fa-behance"></i></div>
                             <div class="link-info">
@@ -157,61 +152,53 @@
                 </div>
             </section>
 
-            <!-- Expandable Sections -->
-            <section class="content-section" id="ki-section">
+            <!-- Blog Section -->
+            <section class="content-section" id="blog-section">
                 <div class="section-header">
-                    <h2 class="section-title">Ki — Unknown</h2>
-                    <button class="section-toggle" onclick="toggleSection('ki-section')">
+                    <h2 class="section-title">Blog</h2>
+                    <button class="section-toggle" onclick="toggleSection('blog-section')">
                         <i class="fa-solid fa-plus"></i> Explore
                     </button>
                 </div>
-                <div class="section-content" id="ki-section-content">
-                    <div class="section-media">
-                        <img src="assets/images/ki-unknown.gif" alt="Ki Unknown" loading="lazy" />
-                    </div>
-                    <div class="section-text">
-                        <p>The past is dead. Your old self? Gone. This is where you shed what you held back—the doubts, the toxic ties, the version of you that settled for less.</p>
-                        <p>Ki isn't just energy; it's a rebirth. Wear your energy. Move in silence. Let your new life begin the moment you step into the skin.</p>
-                        <p>The door is open. Enter The Ki. Welcome to your Inner Child.</p>
-                    </div>
-                </div>
-            </section>
+                <div class="section-content" id="blog-section-content">
+                    <!-- Blog Post: Ki — Unknown -->
+                    <article class="blog-post">
+                        <div class="section-media">
+                            <img src="assets/images/ki-unknown.gif" alt="Ki Unknown" loading="lazy" />
+                        </div>
+                        <div class="section-text">
+                            <h3>Ki — Unknown</h3>
+                            <p>The past is dead. Your old self? Gone. This is where you shed what you held back—the doubts, the toxic ties, the version of you that settled for less.</p>
+                            <p>Ki isn't just energy; it's a rebirth. Wear your energy. Move in silence. Let your new life begin the moment you step into the skin.</p>
+                            <p>The door is open. Enter The Ki. Welcome to your Inner Child.</p>
+                        </div>
+                    </article>
 
-            <section class="content-section" id="loki-section">
-                <div class="section-header">
-                    <h2 class="section-title">Lō-Ki</h2>
-                    <button class="section-toggle" onclick="toggleSection('loki-section')">
-                        <i class="fa-solid fa-plus"></i> Explore
-                    </button>
-                </div>
-                <div class="section-content" id="loki-section-content">
-                    <div class="section-media">
-                        <img src="assets/images/lo-ki.gif" alt="Lō-Ki" loading="lazy" />
-                    </div>
-                    <div class="section-text">
-                        <p>The noise? Mute it. The hype? An illusion. This is where you trade performance for power—the need for approval, the loud opinions, the constant broadcast of your next move.</p>
-                        <p>Low-key isn't just quiet. It's a strategy. Operate in silence. Build in shadows. Let your results make the sound your mouth never did.</p>
-                        <p>Be modest. Be humble. Stay Lō-Ki ローキー.</p>
-                    </div>
-                </div>
-            </section>
+                    <!-- Blog Post: Lō-Ki -->
+                    <article class="blog-post">
+                        <div class="section-media">
+                            <img src="assets/images/lo-ki.gif" alt="Lō-Ki" loading="lazy" />
+                        </div>
+                        <div class="section-text">
+                            <h3>Lō-Ki</h3>
+                            <p>The noise? Mute it. The hype? An illusion. This is where you trade performance for power—the need for approval, the loud opinions, the constant broadcast of your next move.</p>
+                            <p>Low-key isn't just quiet. It's a strategy. Operate in silence. Build in shadows. Let your results make the sound your mouth never did.</p>
+                            <p>Be modest. Be humble. Stay Lō-Ki ローキー.</p>
+                        </div>
+                    </article>
 
-            <section class="content-section" id="guide-section">
-                <div class="section-header">
-                    <h2 class="section-title">The Guide</h2>
-                    <button class="section-toggle" onclick="toggleSection('guide-section')">
-                        <i class="fa-solid fa-plus"></i> Explore
-                    </button>
-                </div>
-                <div class="section-content" id="guide-section-content">
-                    <div class="section-media">
-                        <img src="assets/images/ki-clown.gif" alt="Guide" loading="lazy" />
-                    </div>
-                    <div class="section-text">
-                        <p>The path? Unwritten. The map? Within. This is where you silence the outside voices—the unsolicited advice, the borrowed dreams, the noise of "should."</p>
-                        <p>A guide isn't a leader. It's a mirror. Listen to your rhythm. Trust your footing. Let your intuition speak in a language only you understand.</p>
-                        <p>The way is yours to walk. Follow your own frequency. Welcome to your authority.</p>
-                    </div>
+                    <!-- Blog Post: The Guide -->
+                    <article class="blog-post">
+                        <div class="section-media">
+                            <img src="assets/images/ki-clown.gif" alt="Guide" loading="lazy" />
+                        </div>
+                        <div class="section-text">
+                            <h3>The Guide</h3>
+                            <p>The path? Unwritten. The map? Within. This is where you silence the outside voices—the unsolicited advice, the borrowed dreams, the noise of "should."</p>
+                            <p>A guide isn't a leader. It's a mirror. Listen to your rhythm. Trust your footing. Let your intuition speak in a language only you understand.</p>
+                            <p>The way is yours to walk. Follow your own frequency. Welcome to your authority.</p>
+                        </div>
+                    </article>
                 </div>
             </section>
 
@@ -254,33 +241,27 @@
 
                 <div class="music-grid">
                     <div class="music-item">
-                        <div class="album-art">
-                            <div class="album-placeholder">
-                                <span class="album-title">Homesick ⾕</span>
-                                <span class="artist">Urki 気</span>
-                            </div>
+                        <div class="album-player">
+                            <iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=769453246/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/transparent=true/" seamless><a href="https://urki.bandcamp.com/album/homesick">Homesick ⾕ by Urki 気</a></iframe>
                         </div>
                         <div class="music-info">
                             <h4>Urki 気</h4>
                             <p>Ambient drone and experimental soundscapes</p>
-                            <a href="https://urki.bandcamp.com/" target="_blank" class="listen-btn">
-                                <i class="fa-brands fa-bandcamp"></i> Listen
+                            <a href="https://urki.bandcamp.com/" target="_blank" class="external-link">
+                                View on Bandcamp <i class="fa-solid fa-external-link"></i>
                             </a>
                         </div>
                     </div>
 
                     <div class="music-item">
-                        <div class="album-art">
-                            <div class="album-placeholder">
-                                <span class="album-title">三十三二十七</span>
-                                <span class="artist">33:27</span>
-                            </div>
+                        <div class="album-player">
+                            <iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=1349774721/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/transparent=true/" seamless><a href="https://3327.bandcamp.com/album/hh-hh">HH:HH by 33:27</a></iframe>
                         </div>
                         <div class="music-info">
                             <h4>33:27</h4>
                             <p>Conceptual ambient compositions</p>
-                            <a href="https://3327.bandcamp.com/" target="_blank" class="listen-btn">
-                                <i class="fa-brands fa-bandcamp"></i> Listen
+                            <a href="https://3327.bandcamp.com/" target="_blank" class="external-link">
+                                View on Bandcamp <i class="fa-solid fa-external-link"></i>
                             </a>
                         </div>
                     </div>
