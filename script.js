@@ -315,17 +315,17 @@ class WidgetController {
             {
                 title: 'Ki — Unknown',
                 content: 'The past is dead. Your old self? Gone. This is where you shed what you held back—the doubts, the toxic ties, the version of you that settled for less.',
-                id: 'ki-section'
+                id: 'blog-section'
             },
             {
                 title: 'Lō-Ki',
                 content: 'The noise? Mute it. The hype? An illusion. This is where you trade performance for power.',
-                id: 'loki-section'
+                id: 'blog-section'
             },
             {
                 title: 'The Guide',
                 content: 'The path? Unwritten. The map? Within. This is where you silence the outside voices.',
-                id: 'guide-section'
+                id: 'blog-section'
             },
             {
                 title: 'Visual Work',
