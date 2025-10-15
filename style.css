@@ -935,6 +935,15 @@ body {
     padding-top: 0;
   }
 
+  /* Ensure background texture remains visible on mobile */
+  body::before {
+    background-size: 120px 120px, 100px 100px, 140px 140px;
+  }
+
+  body {
+    background-size: 18px 18px, 12px 12px;
+  }
+
   /* Switch to mobile layout */
   .layout {
     display: flex;
